@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UserAPI</title>
+</head>
+<body>
+
+    <div id="instructions">
+        <h1>Users</h1>
+        <p>press the button to display list of users</p>
+    </div>
+
+    <ol id="users"></ol>
+
+    <button id='usersbutton'>Press Me</button>
+
+    <script>
+    
+    //create the api constructor
+
+    document.getElementById('usersbutton').addEventListener('click', getUsers);
+
+    function getUsers() {
+        
+        const Xhr = new XMLHttpRequest(); 
+
+        Xhr.open("GET", 'https://api.github.com/users', true);
+
+        Xhr.onload = () => {
+
+            const parsedJsonUsers = JSON.parse(Xhr.responseText);
+
+            console.log(parsedJsonUsers);  
+            
+
+            for (let i = 0; i < parsedJsonUsers.length; i++) {
+
+                
+                let user = document.createElement("li");
+
+                    user.innerHTML = parsedJsonUsers[i].login;
+
+                    document.getElementById('users').appendChild(user);
+                
+            }
+        }
+
+        Xhr.send(); 
+
+    }
+    
+    </script>
+    
+</body>
+</html>
