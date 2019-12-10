@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Behold a List</h1>
+    <button id = 'button'>Clicketh Me!!!</button>
+
+
+    <div id = 'users'>Users: <br></div>
+
+    <script type="text/javascript">
+
+        document.getElementById('button').addEventListener('click', loadUsers);
+
+        function loadUsers() {
+            //1. CREATE THE XHR CONSTRUCTOR Object
+
+            const Xhr = new XMLHttpRequest(); 
+
+            //2. Open an XHR communcations channel
+
+            Xhr.open("GET", 'https://api.github.com/users', true);
+
+            Xhr.onload = () =>{
+                // console.log(Xhr.responseText);
+                const parsedText = JSON.parse(Xhr.responseText);
+                // console.log(parsedText);
+
+                for (let i = 0; i < parsedText.length; i++) {
+                    
+                    console.log();
+
+                    let user = document.createElement("P");
+
+                    user.innerHTML = parsedText[i].login;
+
+                    document.getElementById('users').appendChild(user);
+
+                    // document.getElementById('users').innerHTML += "user: " + parsedText[i].login + "</br>";
+
+                    
+                }
+
+               
+                
+            }       
+
+            Xhr.send(); 
+        }
+    
+    </script>
+
+
+</body>
+</html>
