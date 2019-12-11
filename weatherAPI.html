@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Weather In My City</h1>
+    
+    <p id="weather"></p>
+
+    <button id="button">press for temp in your city</button>
+
+    <script>
+    
+    document.getElementById('button').addEventListener('click', getWeather);
+
+    let endPoint = `https://api.openweathermap.org/data/2.5/weather?zip=02916,us&APPID=`;
+          
+    const myKey = `1d9310268663c451264a0a75aef60939`;
+          endPoint += myKey;
+
+
+          console.log(endPoint);
+          
+    function getWeather() {
+        //constructor: create an instace of the Extended-Markup-Language-HyperText-Request
+
+        xhr = new XMLHttpRequest();
+
+        //open
+
+        xhr.open('GET', )
+
+
+        //onload callback
+
+        //send SEEENNDDIT
+        
+    }
+    
+
+    
+    
+    
+    </script>
+</body>
+</html>
