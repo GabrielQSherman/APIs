@@ -52,5 +52,12 @@ What is an API, what does it stand for?
         Exercise:  Accessing Github API Data
 
             https://api.github.com/users  // an api endpoint
+            
+            
+         Open Weather Map API 
+         
+            needs a specific key in order to access api
+         
+            
 
     
