@@ -9,42 +9,83 @@
 
 <body>
     <h1>Weather In My City</h1>
-    
-    <p id="weather"></p>
+    <br>
 
-    <button id="button">press for temp in your city</button>
+    <input type="text" name="cityzip" value = "91210">
+    
+    <p id="cityname">City Name: </p>
+    <p id="sky">Percipitation: </p>
+    <p id="currTemp">The current tempurature is: </p>
+
+    <button id="button">CLICK for the current weather in your city</button>
 
     <script>
+
+    //my weather data that will be used to insert into the DOM
+    const myWeatherData = {
+                temp: 0,
+                humid: true,
+                windy: true,
+                percipType: 'rain',
+                cloudy: 'very',
+
+    }
     
+    //button that grabs data and sends info through XHR
     document.getElementById('button').addEventListener('click', getWeather);
 
-    let endPoint = `https://api.openweathermap.org/data/2.5/weather?zip=02916,us&APPID=`;
+    let zipcode = "02916";
+
+
+    //variables that get correct location weather data and my personal API Key for openweathermap.org
+    let endPoint = `https://api.openweathermap.org/data/2.5/weather?zip=`+ zipcode +`,us&APPID=`; //CHANGE 02916 to your zipcode
           
-    const myKey = `1d9310268663c451264a0a75aef60939`;
+    const myKey = `1d9310268663c451264a0a75aef60939`; //ENTER YOUR KEY FROM YOUR SIGN UP EMAIL HERE
+
           endPoint += myKey;
 
-
-          console.log(endPoint);
+        //this will log a url that when clicked on brings you to a new page with the current weather in Rumford RI (02916) 
+        //data will be displayed as JSON code
+          
           
     function getWeather() {
         //constructor: create an instace of the Extended-Markup-Language-HyperText-Request
 
-        xhr = new XMLHttpRequest();
+        
+
+        const xhr = new XMLHttpRequest();
 
         //open
 
-        xhr.open('GET', )
-
+        xhr.open('GET', endPoint, true);
 
         //onload callback
 
+        xhr.onload = () => {
+
+            const weatherData = JSON.parse(xhr.responseText);
+
+            console.log(weatherData);
+
+            myWeatherData.cloudy = weatherData.weather[0].main;
+            myWeatherData.temp = Math.floor((parseInt(weatherData.main.temp) - 273.15) * 9/5 + 32);
+
+
+            
+
+            document.getElementById('cityname').innerHTML += weatherData.name;
+
+            document.getElementById('sky').innerHTML += myWeatherData.cloudy;
+
+            document.getElementById('currTemp').innerHTML += myWeatherData.temp + "F°";
+
+        }
+
         //send SEEENNDDIT
+
+        xhr.send();
         
     }
-    
-
-    
-    
     
     </script>
 </body>
