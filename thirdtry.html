@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Third Time's a Charm</title>
+</head>
+<body>
+
+    <h1>User Database</h1>
+
+    <button id="button">Press for a current display of users</button>
+
+    <script>
+    
+    document.getElementById('button').addEventListener('click', retrieveUsers);
+
+    function retrieveUsers() {
+        
+        const xhr = new XMLHttpRequest();
+
+        xhr.open('get', 'https://api.github.com/users');
+
+        xhr.onload = () => {
+            
+            let users = JSON.parse(xhr.responseText);
+
+            // console.log(users);
+
+            for (let i = 0; i < users.length; i++) {
+
+                console.log(users[i].login);
+
+                document.getElementById()
+                
+                
+            }
+            
+        }
+
+        xhr.send();
+    }
+    
+    </script>
+
+    
+</body>
+</html>
