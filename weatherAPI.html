@@ -11,7 +11,7 @@
     <h1>Weather In My City</h1>
     <br>
 
-    <input type="text" name="cityzip" id="cityzip" placeholder = "Sample ZipCode 91210">
+    <input type="text" name="cityzip" id="cityzip" placeholder = "Sample ZipCode 91210" maxlength="5">
     
     <p id="cityname">City Name: </p>
     <p id="percip">Percipitation: </p>
@@ -25,6 +25,7 @@
     //my weather data that will be used to insert into the DOM
     const myWeatherData = {
                 temp: 0,
+                feelslike: 0,
                 humidity: 0,
                 windy: true,
                 percipType: 'rain',
@@ -42,9 +43,18 @@
           
     function getWeather() {
 
-        let zipcode = document.getElementById('cityzip').value;
 
-        console.log(zipcode);
+        //User input handling for zipcode. a check must be done to see if it is a valid zipcode
+        let zipcode = document.getElementById('cityzip').value,
+
+            numcheck = parseInt(zipcode);
+
+        if (zipcode.length != 5 || isNaN(numcheck)) {
+            document.getElementById('cityzip').value = '';
+            document.getElementById('cityzip').placeholder = 'Enter a valid zipcode';
+        }
+
+        // console.log(zipcode.length);
         
 
         //variables that get correct location weather data and my personal API Key for openweathermap.org
@@ -75,6 +85,7 @@
 
             myWeatherData.cloudy = weatherData.weather[0].main;
             myWeatherData.temp = Math.floor((parseInt(weatherData.main.temp) - 273.15) * 9/5 + 32);
+            myWeatherData.feelslike = Math.floor((parseInt(weatherData.main.feels_like) - 273.15) * 9/5 + 32);
             myWeatherData.humidity = weatherData.main.humidity;
 
             if (weatherData.wind.speed < 5) {
@@ -82,13 +93,13 @@
             }
             
 
-            document.getElementById('cityname').innerHTML += weatherData.name;
+            document.getElementById('cityname').innerHTML = 'City Name: ' + weatherData.name;
 
-            document.getElementById('percip').innerHTML += myWeatherData.cloudy;
+            document.getElementById('percip').innerHTML = 'Percipitation: ' + myWeatherData.cloudy;
 
-            document.getElementById('humid').innerHTML += myWeatherData.humidity + "%";
+            document.getElementById('humid').innerHTML = 'Humidity: ' + myWeatherData.humidity + "%";
 
-            document.getElementById('currTemp').innerHTML += myWeatherData.temp + "F°";
+            document.getElementById('currTemp').innerHTML += myWeatherData.temp + "F°" + "  And it feels like: " + myWeatherData.feelslike + "F°";
 
         }
 
