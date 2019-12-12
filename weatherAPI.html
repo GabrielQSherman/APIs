@@ -70,6 +70,10 @@
             myWeatherData.cloudy = weatherData.weather[0].main;
             myWeatherData.temp = Math.floor((parseInt(weatherData.main.temp) - 273.15) * 9/5 + 32);
 
+            if (weatherData.wind.speed < 5) {
+                myWeatherData.windy == false;
+            }
+
 
             
 
