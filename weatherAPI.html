@@ -18,7 +18,7 @@
     <p id="humid">Humidity: </p>
     <p id="currTemp">The current tempurature is: </p>
 
-    <button id="button">CLICK for the current weather in your city</button>
+    <button id="button">CLICK for the current weather in the city of the zipcode you entered</button>
 
     <script>
 
@@ -35,25 +35,27 @@
     //button that grabs data and sends info through XHR
     document.getElementById('button').addEventListener('click', getWeather);
 
-    let zipcode = "02916";
-
-
-    //variables that get correct location weather data and my personal API Key for openweathermap.org
-    let endPoint = `https://api.openweathermap.org/data/2.5/weather?zip=`+ zipcode +`,us&APPID=`; //CHANGE 02916 to your zipcode
-          
-    const myKey = `1d9310268663c451264a0a75aef60939`; //ENTER YOUR KEY FROM YOUR SIGN UP EMAIL HERE
-
-          endPoint += myKey;
 
         //this will log a url that when clicked on brings you to a new page with the current weather in Rumford RI (02916) 
         //data will be displayed as JSON code
           
           
     function getWeather() {
-        //constructor: create an instace of the Extended-Markup-Language-HyperText-Request
 
+        let zipcode = "02916";
+
+        //variables that get correct location weather data and my personal API Key for openweathermap.org
+        let endPoint = `https://api.openweathermap.org/data/2.5/weather?zip=`+ zipcode +`,us&APPID=`; //CHANGE 02916 to your zipcode
+            
+        const myKey = `1d9310268663c451264a0a75aef60939`; //ENTER YOUR KEY FROM YOUR SIGN UP EMAIL HERE
+
+        endPoint += myKey;
+
+        console.log(endPoint);
         
 
+
+        //constructor: create an instace of the Extended-Markup-Language-HyperText-Request
         const xhr = new XMLHttpRequest();
 
         //open
@@ -75,8 +77,6 @@
             if (weatherData.wind.speed < 5) {
                 myWeatherData.windy == false;
             }
-
-
             
 
             document.getElementById('cityname').innerHTML += weatherData.name;
