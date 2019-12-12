@@ -58,7 +58,7 @@
         
 
         //variables that get correct location weather data and my personal API Key for openweathermap.org
-        let endPoint = `https://api.openweathermap.org/data/2.5/weather?zip=`+ zipcode +`,us&APPID=`; //CHANGE 02916 to your zipcode
+        let endPoint = `https://api.openweathermap.org/data/2.5/weather?zip=`+ zipcode +`,us&APPID=`; 
             
         const myKey = `1d9310268663c451264a0a75aef60939`; //ENTER YOUR KEY FROM YOUR SIGN UP EMAIL HERE
 
@@ -82,7 +82,8 @@
             const weatherData = JSON.parse(xhr.responseText);
 
             console.log(weatherData);
-
+            
+            //setting my local weather object to the data collected from 
             myWeatherData.cloudy = weatherData.weather[0].main;
             myWeatherData.temp = Math.floor((parseInt(weatherData.main.temp) - 273.15) * 9/5 + 32);
             myWeatherData.feelslike = Math.floor((parseInt(weatherData.main.feels_like) - 273.15) * 9/5 + 32);
@@ -99,7 +100,7 @@
 
             document.getElementById('humid').innerHTML = 'Humidity: ' + myWeatherData.humidity + "%";
 
-            document.getElementById('currTemp').innerHTML += myWeatherData.temp + "F°" + "  And it feels like: " + myWeatherData.feelslike + "F°";
+            document.getElementById('currTemp').innerHTML = 'The current tempurature is: ' + myWeatherData.temp + "F°" + "  And it feels like: " + myWeatherData.feelslike + "F°";
 
         }
 
