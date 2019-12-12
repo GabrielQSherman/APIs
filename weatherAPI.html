@@ -14,7 +14,8 @@
     <input type="text" name="cityzip" value = "91210">
     
     <p id="cityname">City Name: </p>
-    <p id="sky">Percipitation: </p>
+    <p id="percip">Percipitation: </p>
+    <p id="humid">Humidity: </p>
     <p id="currTemp">The current tempurature is: </p>
 
     <button id="button">CLICK for the current weather in your city</button>
@@ -24,7 +25,7 @@
     //my weather data that will be used to insert into the DOM
     const myWeatherData = {
                 temp: 0,
-                humid: true,
+                humidity: 0,
                 windy: true,
                 percipType: 'rain',
                 cloudy: 'very',
@@ -69,6 +70,7 @@
 
             myWeatherData.cloudy = weatherData.weather[0].main;
             myWeatherData.temp = Math.floor((parseInt(weatherData.main.temp) - 273.15) * 9/5 + 32);
+            myWeatherData.humidity = weatherData.main.humidity;
 
             if (weatherData.wind.speed < 5) {
                 myWeatherData.windy == false;
@@ -79,7 +81,9 @@
 
             document.getElementById('cityname').innerHTML += weatherData.name;
 
-            document.getElementById('sky').innerHTML += myWeatherData.cloudy;
+            document.getElementById('percip').innerHTML += myWeatherData.cloudy;
+
+            document.getElementById('humid').innerHTML += myWeatherData.humidity + "%";
 
             document.getElementById('currTemp').innerHTML += myWeatherData.temp + "F°";
 
