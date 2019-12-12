@@ -11,7 +11,7 @@
     <h1>Weather In My City</h1>
     <br>
 
-    <input type="text" name="cityzip" value = "91210">
+    <input type="text" name="cityzip" id="cityzip" placeholder = "Sample ZipCode 91210">
     
     <p id="cityname">City Name: </p>
     <p id="percip">Percipitation: </p>
@@ -42,7 +42,10 @@
           
     function getWeather() {
 
-        let zipcode = "02916";
+        let zipcode = document.getElementById('cityzip').value;
+
+        console.log(zipcode);
+        
 
         //variables that get correct location weather data and my personal API Key for openweathermap.org
         let endPoint = `https://api.openweathermap.org/data/2.5/weather?zip=`+ zipcode +`,us&APPID=`; //CHANGE 02916 to your zipcode
