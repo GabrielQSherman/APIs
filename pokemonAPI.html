@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .titleFlexBox {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            height: 10%;
+            background-color: #ffa1c0;
+            text-justify: auto;
+        }
+
+        .pokeInput {
+                display: flex;
+                background-color: rgb(146, 233, 255);
+                justify-content: center;
+                flex-wrap: nowrap;
+        }
+
+        .stats {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            flex-wrap: nowrap;
+        }
+       
+    </style>
+
+
+</head>
+
+<body>
+    <h1 class="titleFlexBox">Pokemon Finder</h1> 
+
+    <div class="pokeInput">
+
+        <p style="font-weight: bold;">Enter a Pokemon name or number to get stats about them!</p>
+       
+        <input class="inputbox" id="nameinput" type="text" placeholder="Pokemon Name ie 'Mewtwo'" style="width: 220px; font-size: 17px;">        
+        <button id="searchbtn">Press to search</button>
+    </div>
+
+    <div class="stats">
+
+    <h2>Stats</h2>
+
+    <p id="name">Name: </p>
+    <p id="idNum">Id #: </p>
+    <p id="height">Height: </p>
+    <p id="weight">Weight: </p>
+    
+    <img id="img1">
+    <img id="img2">
+
+
+    </div>
+
+    <script src="pokeapi.js"></script>
+   
+
+</body>
+</html>
