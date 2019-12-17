@@ -1,5 +1,7 @@
 document.getElementById('searchbtn').addEventListener('click', find_pokemon);
 
+document.getElementById('clearbtn').addEventListener('click', clearList);
+
 function find_pokemon() {
 
     const xhr = new XMLHttpRequest(),
@@ -53,6 +55,16 @@ function find_pokemon() {
 
     document.getElementById('img1').src = "";
     document.getElementById('img2').src = "";
+    
+}
+
+function clearList() {
+
+    document.getElementById('name').innerHTML = 'Name: ';
+    document.getElementById('idNum').innerHTML = 'Id #: ';
+    document.getElementById('height').innerHTML = 'Height: ';
+    document.getElementById('weight').innerHTML = 'Weight: ';
+    document.getElementById('image').innerHTML = 'Image: ';    
     
 }
 
