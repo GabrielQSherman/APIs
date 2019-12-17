@@ -23,12 +23,20 @@ function find_pokemon() {
 
                    let pokemonInfo = JSON.parse(xhr.responseText);
 
-                   console.log(pokemonInfo);
+                   console.log(endPoint);
 
-                   document.getElementById('name').innerText = `Name: ${pokemonInfo.name.substring(0,1).toUpperCase() + pokemonInfo.name.substring(1,pokemonInfo.name.length)}`;
-                   document.getElementById('idNum').innerText = `Id #: ${pokemonInfo.id}`;
-                   document.getElementById('height').innerText = `Height: ${pokemonInfo.height}`;
-                   document.getElementById('weight').innerText = `Weight: ${pokemonInfo.weight}`;
+                   document.getElementById('name').innerHTML += `<h1>${pokemonInfo.name.substring(0,1).toUpperCase() + pokemonInfo.name.substring(1,pokemonInfo.name.length)}</h1>`;
+                   document.getElementById('idNum').innerHTML += `<h1>${pokemonInfo.id}</h1>`;
+                   document.getElementById('height').innerHTML += `<h1>${pokemonInfo.height}</h1>`;
+                   document.getElementById('weight').innerHTML += `<h1>${pokemonInfo.weight}</h1>`;
+
+                        console.log(pokemonInfo.sprites.front_default);
+
+                //    document.getElementById(img1).src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png`;
+                   document.getElementById(img2).src = '/img.jpg';
+
+                   
+                   
                    
 
                 }
