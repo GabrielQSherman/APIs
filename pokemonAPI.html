@@ -23,10 +23,10 @@
                 flex-wrap: nowrap;
         }
 
-        .stats {
+        .stats>div {
             display: flex;
             width: 100%;
-            justify-content: center;
+            justify-content: middle;
             flex-wrap: nowrap;
         }
        
@@ -47,16 +47,21 @@
     </div>
 
     <div class="stats">
-
+        
     <h2>Stats</h2>
+    <div>
 
-    <p id="name">Name: </p>
-    <p id="idNum">Id #: </p>
-    <p id="height">Height: </p>
-    <p id="weight">Weight: </p>
+    <p id="name" style="font-weight: bold;flex: 2">Name: </p>
+    <p id="idNum" style="font-weight: bold;flex: 1">Id #: </p>
+    <p id="height" style="font-weight: bold;flex: 1">Height: </p>
+    <p id="weight" style="font-weight: bold;flex: 1">Weight: </p>
+    </div>
     
-    <img id="img1">
-    <img id="img2">
+    <div>
+        <img id="img1" style="flex: 1">
+        <img id="img2" style="flex: 1">
+    </div>
+    
 
 
     </div>
