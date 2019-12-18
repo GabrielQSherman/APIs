@@ -1,0 +1,30 @@
+body {
+    background-color: rgb(220, 242, 255);
+  }
+  
+  h1 {
+    color: rgb(65, 0, 0);
+    margin-left: 40px;
+  } 
+  
+  .images {
+      display: flex;
+      justify-content: center;
+  }
+  .images>div {
+      /* display: flexbox; */
+      background-color: #fffeb4;
+      margin-top: 5%;
+
+  }
+
+  .info {
+    display: flex;
+    text-justify: auto;
+    justify-content: center;
+    margin: 1%;
+    width: 98%;
+    height: 100%;
+    background-color: #fffeb4;
+    
+  }
