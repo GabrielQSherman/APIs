@@ -1,10 +1,28 @@
-// document.getElementById('btn1').addEventListener('click', button_function);
+document.getElementById('search').addEventListener('click', onload_function);
+
+let date = '2019-12-07';
+
 onload_function()
 function onload_function() {
 
-    const xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest() , endpoint = `https://api.nasa.gov/planetary/apod`, myKey = `?api_key=Fgrr1lJp3BQ5AUgM9k0EuSkLS0R9RhUKbSavz4dP`;
 
-    xhr.open('GET', `https://api.nasa.gov/planetary/apod?api_key=Fgrr1lJp3BQ5AUgM9k0EuSkLS0R9RhUKbSavz4dP`,true);
+    if (document.getElementById('dateinput').value == '') {
+
+        endpoint += myKey + "&date=" + date;
+        
+    } else {
+
+        endpoint += myKey + '&date=' + document.getElementById('dateinput').value;
+
+    }
+
+    
+
+    console.log(endpoint);
+    
+
+    xhr.open('GET', endpoint ,true);
 
     xhr.onload = () => {
 
