@@ -12,9 +12,10 @@ body {
       justify-content: center;
   }
   .images>div {
-      /* display: flexbox; */
+      display: flex;
       background-color: #fffeb4;
       margin-top: 5%;
+      margin-bottom: 2%;
 
   }
 
