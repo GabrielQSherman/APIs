@@ -1,6 +1,10 @@
 document.getElementById('search').addEventListener('click', onload_function);
 
-let date = '2019-12-07';
+let computerDate = new Date(),
+    dd = String(computerDate.getDate()).padStart(2, '0'),
+    mm = String(computerDate.getMonth() + 1).padStart(2, '0'), //January is 0!
+    yyyy = computerDate.getFullYear(),
+    today = yyyy + '-' + mm + '-' + dd;
 
 onload_function()
 function onload_function() {
@@ -9,11 +13,11 @@ function onload_function() {
 
     if (document.getElementById('dateinput').value == '') {
 
-        endpoint += myKey + "&date=" + date;
+        endpoint += myKey + "&date=" + today + '&hd=true';
         
     } else {
 
-        endpoint += myKey + '&date=' + document.getElementById('dateinput').value;
+        endpoint += myKey + '&date=' + document.getElementById('dateinput').value + '&hd=true';
 
     }
 
@@ -30,15 +34,20 @@ function onload_function() {
         
         const nasaData = JSON.parse(xhr.responseText);
 
+        if (nasaData.code == '400') {
+            document.getElementById('dateinput').value = '';
+            document.getElementById('dateinput').placeholder = 'Please enter date in the correct format.';
+        } else {
 
+            document.getElementById('image').src = nasaData.hdurl;
 
-        document.getElementById('image').src = nasaData.hdurl;
+            document.getElementById('title').innerHTML =  nasaData.title;
 
-        document.getElementById('title').innerHTML =  nasaData.title;
+            document.getElementById('date').innerHTML = 'Date: ' + nasaData.date;
 
-        document.getElementById('date').innerHTML = 'Date: ' + nasaData.date;
+            document.getElementById('photoinfo').innerHTML = 'About this image: ' + '<hr>' + nasaData.explanation;
 
-        document.getElementById('photoinfo').innerHTML = 'About this image: ' + '<hr>' + nasaData.explanation;
+        }
 
     }
 
