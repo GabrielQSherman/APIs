@@ -34,11 +34,11 @@ function onload_function() {
 
         document.getElementById('image').src = nasaData.hdurl;
 
-        document.getElementById('title').innerHTML += nasaData.title;
+        document.getElementById('title').innerHTML =  nasaData.title;
 
-        document.getElementById('date').innerHTML += nasaData.date;
+        document.getElementById('date').innerHTML = 'Date: ' + nasaData.date;
 
-        document.getElementById('photoinfo').innerHTML += '<hr>' + nasaData.explanation;
+        document.getElementById('photoinfo').innerHTML = 'About this image: ' + '<hr>' + nasaData.explanation;
 
     }
 
