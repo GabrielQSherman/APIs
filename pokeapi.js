@@ -31,15 +31,17 @@ function find_pokemon() {
                    document.getElementById('idNum').innerHTML += `<hr><h1>${pokemonInfo.id}</h1><br>`;
                    document.getElementById('height').innerHTML += `<hr><h1>${pokemonInfo.height}</h1><br>`;
                    document.getElementById('weight').innerHTML += `<hr><h1>${pokemonInfo.weight}</h1><br>`;
-                   document.getElementById('image').innerHTML += '<hr><img src = ' + pokemonInfo.sprites.front_default + '><br>';
-                //    document.getElementById('image').innerHTML += '<h';
+                   let typesString = '';
+                   for (let i = 0; i < pokemonInfo.types.length; i++) {
 
+                       typesString += `${pokemonInfo.types[i].type.name.substring(0,1).toUpperCase() + pokemonInfo.types[i].type.name.substring(1,pokemonInfo.types[i].type.name.length)} `;
+                       
+                   }
+                   document.getElementById('types').innerHTML += '<hr>' + `<h1>${typesString}</h1>` +  '<br>';
+                   document.getElementById('image').innerHTML += '<hr><img src = ' + pokemonInfo.sprites.front_default + '><br>';
+                
                         console.log(pokemonInfo.sprites.front_default);
 
-                //    document.getElementById(img1).src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png`;
-                //    document.getElementById(img2).src = '/img.jpg';
-
-                   
                    
                    
 
