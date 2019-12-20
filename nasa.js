@@ -1,5 +1,8 @@
 document.getElementById('search').addEventListener('click', onload_function);
 
+    let width = this.innerWidth, //this refers to window
+        height = this.innerHeight;
+
 let computerDate = new Date(),
     dd = String(computerDate.getDate()).padStart(2, '0'),
     mm = String(computerDate.getMonth() + 1).padStart(2, '0'), //January is 0!
@@ -21,10 +24,7 @@ function onload_function() {
 
     }
 
-    
-
     console.log(endpoint);
-    
 
     xhr.open('GET', endpoint ,true);
 
