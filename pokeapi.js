@@ -5,7 +5,7 @@ document.getElementById('clearbtn').addEventListener('click', clearList);
 function find_pokemon() {
 
     const xhr = new XMLHttpRequest(),
-          pokemonName = document.getElementById('nameinput').value,
+          pokemonName = document.getElementById('nameinput').value.toLowerCase(),
           endPoint = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
 
           if (pokemonName == '') {
@@ -68,6 +68,7 @@ function clearList() {
     document.getElementById('idNum').innerHTML = 'Id #: ';
     document.getElementById('height').innerHTML = 'Height: ';
     document.getElementById('weight').innerHTML = 'Weight: ';
+    document.getElementById('types').innerHTML = 'Types: ';
     document.getElementById('image').innerHTML = 'Image: ';    
     
 }
