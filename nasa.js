@@ -1,9 +1,9 @@
 document.getElementById('search').addEventListener('click', onload_function);
 
     let width = this.innerWidth, //this refers to window
-        height = this.innerHeight;
-
-let computerDate = new Date(),
+        height = this.innerHeight,
+    //this will be for getting the current date
+    computerDate = new Date(),
     dd = String(computerDate.getDate()).padStart(2, '0'),
     mm = String(computerDate.getMonth() + 1).padStart(2, '0'), //January is 0!
     yyyy = computerDate.getFullYear(),
