@@ -80,11 +80,15 @@ app.get('/json', (req, res) => {
 
 /** 8) Chaining middleware. A Time server */
 
-app.get('/time', (req, res) => {
-  
-    let time = new Date().toString();
+app.get('/now', (req, res, next) => {
+  //the req obj can have keys made and set with values so they can be called upon when need in chained-callback-function
+    req.time = new Date().toString(); //the current time is converted to a string and then set to the key 'time' in the request obj
     
-    console.log(time);
+    next() //next function in sequence is called
+}, (req, res) => {
+    //the dom with have a response sent, it will display the current time as a json object converted to text
+  res.json({time: req.time});
+
 })
 
 
