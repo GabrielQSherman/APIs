@@ -9,7 +9,7 @@ app.use('/', (req, res, next) => {
     let post = req.method + " " + req.path + " - " + req.ip;
     console.log(post); //logs to the console some basic info about each request
   next()
-})
+}, ())
 
 
 // --> 11)  Mount the body-parser middleware  here
@@ -75,10 +75,17 @@ app.get('/json', (req, res) => {
 /** 7) Root-level Middleware - A logger */
 //  place it before all the routes !
 
-
+//DONE ABOVE line 7
 
 
 /** 8) Chaining middleware. A Time server */
+
+app.get('/time', (req, res) => {
+  
+    let time = new Date().toString();
+    
+    console.log(time);
+})
 
 
 /** 9)  Get input from client - Route parameters */
