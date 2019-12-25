@@ -21,17 +21,21 @@ console.log("Hello World");
 
 
 /** 3) Serve an HTML file */
-
-let absolutePath = __dirname + '/views/index.html';
-
+//not only can you just send plain text to the server (which then gets implemented to the DOM), you can also send files
+let absolutePath = __dirname + '/views/index.html'; 
+//in this case we are chosing to first send the html file 
 console.log(absolutePath);
 
 app.get('/', (req, res) => {
-  res.sendFile(absolutePath);
+  res.sendFile(absolutePath); //very similar to Response.send() but can actually change the whole webpage
 })
 
 
 /** 4) Serve static assets  */
+
+let staticPath = __dirname + '/public'; //a simple variable that will hold the path that leads to the CSS file for our website
+
+app.use(express.static(staticPath)); // the path parameter was left out but the middleware function can not be left out. this added the css file onto our website
 
 
 /** 5) serve JSON on a specific route */
