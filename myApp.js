@@ -21,27 +21,48 @@ console.log("Hello World");
 
 
 /** 3) Serve an HTML file */
-//not only can you just send plain text to the server (which then gets implemented to the DOM), you can also send files
-let absolutePath = __dirname + '/views/index.html'; 
-//in this case we are chosing to first send the html file 
+
+let absolutePath = __dirname + '/views/index.html';
+
 console.log(absolutePath);
 
 app.get('/', (req, res) => {
-  res.sendFile(absolutePath); //very similar to Response.send() but can actually change the whole webpage
+  res.sendFile(absolutePath);
 })
 
 
 /** 4) Serve static assets  */
 
-let staticPath = __dirname + '/public'; //a simple variable that will hold the path that leads to the CSS file for our website
 
-app.use(express.static(staticPath)); // the path parameter was left out but the middleware function can not be left out. this added the css file onto our website
+let staticPath = __dirname + '/public';
+
+
+app.use(express.static(staticPath));
+
+
 
 
 /** 5) serve JSON on a specific route */
 
+// app.get('/json', (req, res) => {
+//   res.json({message: "Hello json"});
+// })
+
 
 /** 6) Use the .env file to configure the app */
+
+app.get('/json', (req, res) => {
+  
+  let obj = {
+    message: "Hello json"
+  }
+  
+  if (process.env.MESSAGE_STYLE === "uppercase") {
+    obj.message = obj.message.toUpperCase();
+  } 
+  
+  res.json(obj);
+})
  
  
 /** 7) Root-level Middleware - A logger */
